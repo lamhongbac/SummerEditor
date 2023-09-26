@@ -11,10 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Files\Controllers\" />
     <Folder Include="Areas\Files\Data\" />
     <Folder Include="Areas\Files\Models\" />
-    <Folder Include="Areas\Files\Views\" />
   </ItemGroup>
 
 </Project>
