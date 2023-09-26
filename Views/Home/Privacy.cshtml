@@ -7,8 +7,14 @@
 <textarea id="summernote_editor">
 
 </textarea>   
+<p> second editor</p>
+<textarea id="summernote_editor2">
+
+</textarea>
 @{
 var summernotemodel= new SummerNotesModel("#summernote_editor");
-
+    var summernotemodel2 = new SummerNotesModel("#summernote_editor2",false
+    );
 }
 <partial name="_SummerNote" model="summernotemodel"/>
+<partial name="_SummerNote" model="summernotemodel2" />
