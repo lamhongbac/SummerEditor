@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<textarea id="summernote_editor">
+
+</textarea>   
+@{
+var summernotemodel= new SummerNotesModel("#summernote_editor");
+
+}
+<partial name="_SummerNote" model="summernotemodel"/>
