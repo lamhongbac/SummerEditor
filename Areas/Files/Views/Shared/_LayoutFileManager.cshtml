@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SummerEditor</title>
@@ -24,15 +24,11 @@
          
     
 </head>
-<body>
-    
-    
+    <body> 
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        @await RenderSectionAsync("Scripts", required: false)
 
-
-    
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+    </body>
 </html>
