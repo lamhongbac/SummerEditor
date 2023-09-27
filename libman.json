@@ -11,7 +11,7 @@
       "destination": "wwwroot/lib/jqueryui"
     },
     {
-      "library": "elfinder@2.1.62",
+      "library": "elfinder@2.1.57",
       "destination": "wwwroot/lib/elfinder"
     }
   ]

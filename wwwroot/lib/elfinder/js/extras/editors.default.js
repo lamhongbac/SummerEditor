@@ -181,7 +181,7 @@
 		if (getfile === 'ckeditor') {
 			elFinder.prototype._options.getFileCallback = function(file, fm) {
 				window.opener.CKEDITOR.tools.callFunction((function() {
-					var reParam = new RegExp('(?:[?&]|&amp;)CKEditorFuncNum=([^&]+)', 'i'),
+					var reParam = new RegExp('(?:[\?&]|&amp;)CKEditorFuncNum=([^&]+)', 'i'),
 						match = window.location.search.match(reParam);
 					return (match && match.length > 1) ? match[1] : '';
 				})(), fm.convAbsUrl(file.url));
@@ -218,7 +218,7 @@
 					this.disabled = true;
 				} else {
 					this.opts = Object.assign({
-						version: 'v3.15.3'
+						version: 'v3.9.0'
 					}, opts.extraOptions.tuiImgEditOpts || {}, {
 						iconsPath : fm.baseUrl + 'img/tui-',
 						theme : {}
@@ -255,7 +255,20 @@
 										path: $base.data('url'),
 										name: self.file.name
 									},
-									theme: opts.theme,
+									theme: Object.assign(opts.theme, {
+										'menu.normalIcon.path': iconsPath + 'icon-d.svg',
+										'menu.normalIcon.name': 'icon-d',
+										'menu.activeIcon.path': iconsPath + 'icon-b.svg',
+										'menu.activeIcon.name': 'icon-b',
+										'menu.disabledIcon.path': iconsPath + 'icon-a.svg',
+										'menu.disabledIcon.name': 'icon-a',
+										'menu.hoverIcon.path': iconsPath + 'icon-c.svg',
+										'menu.hoverIcon.name': 'icon-c',
+										'submenu.normalIcon.path': iconsPath + 'icon-d.svg',
+										'submenu.normalIcon.name': 'icon-d',
+										'submenu.activeIcon.path': iconsPath + 'icon-c.svg',
+										'submenu.activeIcon.name': 'icon-c'
+									}),
 									initMenu: 'filter',
 									menuBarPosition: 'bottom'
 								},
@@ -270,7 +283,7 @@
 										w = parseInt(c.attr('width')),
 										h = parseInt(c.attr('height')),
 										a = w / h,
-										z, mw, mh;
+										mw, mh;
 									if (v === 0) {
 										mw = w;
 										mh = h;
@@ -282,16 +295,7 @@
 											mh = h;
 										}
 									}
-									z = Math.round(mw / w * 100);
-									// Control zoom button of TUI Image Editor
-									if (z < 100) {
-										iEditor.resetZoom();
-										iEditor.stopDrawingMode();
-										tuiZoomCtrls.hide();
-									} else {
-										tuiZoomCtrls.show();
-									}
-									per.text(z + '%');
+									per.text(Math.round(mw / w * 100) + '%');
 									iEditor.resizeCanvasDimension({width: mw, height: mh});
 									// continually change more
 									if (zoomMore) {
@@ -304,7 +308,6 @@
 							zup = $('<span class="ui-icon ui-icon-plusthick"></span>').data('val', 10),
 							zdown = $('<span class="ui-icon ui-icon-minusthick"></span>').data('val', -10),
 							per = $('<button></button>').css('width', '4em').text('%').attr('title', '100%').data('val', 0),
-							tuiZoomCtrls,
 							quty, qutyTm, zoomTm, zoomMore;
 
 						tmpContainer.remove();
@@ -369,8 +372,6 @@
 									quty.trigger('change');
 								});
 							}
-							// ZOOM controls of TUI Image Editor
-							tuiZoomCtrls = $base.find('.tie-btn-zoomIn,.tie-btn-zoomOut,.tie-btn-hand');
 							// show initial scale
 							zoom(null);
 						}, 100);

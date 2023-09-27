@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using elFinder.Net.Core;
+using elFinder.NetCore;
+using elFinder.NetCore.Drivers.FileSystem;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using elFinder.NetCore.Drivers.FileSystem;
 
 namespace SummerEditor.Areas.Files.Controllers
 {
@@ -20,7 +20,7 @@ namespace SummerEditor.Areas.Files.Controllers
 
             // Url để client-side kết nối đến backend
             // /el-finder-file-system/connector
-            [Route("connector")]
+            [Route("file-manager-connector")]
             public async Task<IActionResult> Connector()
             {
                 var connector = GetConnector();
