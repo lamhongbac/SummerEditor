@@ -1,10 +1,14 @@
-﻿@section Scripts
-{
+﻿<h1> file manager </h1>
+<div id="elfinder">
+
+</div>
+
+
    <link rel="stylesheet" href=" ~/lib/jqueryui/themes/base/theme.css" />
     <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
     <link rel="stylesheet" href="~/lib/elfinder/css/elfinder.full.css" />
     <link rel="stylesheet" href="~/lib/elfinder/css/theme.min.css" />
-    <link rel="stylesheet" href="~/css/elfinder-material-theme/Material/css/theme-gray.css" />
+    
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
@@ -25,8 +29,8 @@
             });
 
             var options = {
-                baseUrl: "/lib/elfinder/",
-                url: "/el-finder-file-system/connector",
+                baseUrl: "@Url.Content("~/lib/elfinder/")",
+                url:"@Url.Action("Connector")" ;// "/el-finder-file-system/connector",
                 rememberLastDir: false,
                 commands: myCommands,
                 lang: 'vi',
@@ -53,4 +57,3 @@
             $('#elfinder').elfinder(options).elfinder('instance');
         });
     </script>
-}
