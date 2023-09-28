@@ -1,49 +1,54 @@
-﻿<h1> file manager </h1>
+﻿
+
+<h1> file manager </h1>
+
 
 <div id="elfinder">
 
 </div>
 
-<script type="text/javascript">
+@section Scripts
+    {              
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/lib/elfinder/js/elfinder.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
     // Documentation for client options:
-    // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
-    $(document).ready(function () {
+    // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options  
         var myCommands = elFinder.prototype._options.commands;
-
         // Not yet implemented commands in elFinder.NetCore
         var disabled = ['callback', 'chmod', 'editor', 'netmount', 'ping', 'search', 'zipdl', 'help'];
         elFinder.prototype.i18.en.messages.TextArea = "Edit";
-
         $.each(disabled, function (i, cmd) {
             (idx = $.inArray(cmd, myCommands)) !== -1 && myCommands.splice(idx, 1);
         });
-
         var options = {
             baseUrl: "@Url.Content("~/lib/elfinder/")",
-            url:"@Url.Action("Connector")" ;
+            url:"@Url.Action("Connector")" ,
             rememberLastDir: false,
             commands: myCommands,
+            Height:"100%",
             lang: 'vi',
             uiOptions: {
-                toolbar: [
-                    ['back', 'forward'],
-                    ['reload'],
-                    ['home', 'up'],
-                    ['mkdir', 'mkfile', 'upload'],
-                    ['open', 'download'],
-                    ['undo', 'redo'],
-                    ['info'],
-                    ['quicklook'],
-                    ['copy', 'cut', 'paste'],
-                    ['rm'],
-                    ['duplicate', 'rename', 'edit'],
-                    ['selectall', 'selectnone', 'selectinvert'],
-                    ['view', 'sort']
-                ]
-            },
-            //onlyMimes: ["image", "text/plain"] // Get files of requested mime types only
-            lang: 'vi',
-        };
+                    toolbar: [
+                        ['back', 'forward'],
+                        ['reload'],
+                        ['home', 'up'],
+                        ['mkdir', 'mkfile', 'upload'],
+                        ['open', 'download', 'getfile'],
+                        ['undo', 'redo'],
+                        ['info'],
+                        ['quicklook'],
+                        ['copy', 'cut', 'paste'],
+                        ['rm'],
+                        ['duplicate', 'rename', 'edit'],
+                        ['selectall', 'selectnone', 'selectinvert'],
+                        ['view', 'sort']
+                    ]
+                },                
+                lang: 'vi',
+            };
         $('#elfinder').elfinder(options).elfinder('instance');
-    });
-</script>
+        });
+    </script>
+}

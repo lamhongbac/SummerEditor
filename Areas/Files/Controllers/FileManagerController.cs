@@ -48,9 +48,12 @@ namespace SummerEditor.Areas.Files.Controllers
             // .. ... wwww/files
             string rootDirectory = Path.Combine(_env.WebRootPath, pathroot);
 
+        //  baseUrl: "@Url.Content("~/lib/elfinder/")",
+        //url: "@Url.Action("Connector")" ,
+
             // https://localhost:5001/files/
             string url = $"{uri.Scheme}://{uri.Authority}/{pathroot}/";
-            string urlthumb = $"{uri.Scheme}://{uri.Authority}/el-finder-file-system/thumb/";
+            string urlthumb = $"{uri.Scheme}://{uri.Authority}/file-manager-thumb/";
 
 
             var root = new RootVolume(rootDirectory, url, urlthumb)
