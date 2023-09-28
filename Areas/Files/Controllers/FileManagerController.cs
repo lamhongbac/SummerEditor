@@ -38,7 +38,7 @@ namespace SummerEditor.Areas.Files.Controllers
         private Connector GetConnector()
         {
             // Thư mục gốc lưu trữ là wwwwroot/files (đảm bảo có tạo thư mục này)
-            string pathroot = "files";
+            string pathroot = "Uploads";
             string requestUrl = "contents";
 
             var driver = new FileSystemDriver();
@@ -47,13 +47,13 @@ namespace SummerEditor.Areas.Files.Controllers
             var uri = new Uri(absoluteUrl);
 
             // .. ... wwww/files
-            string rootDirectory = Path.Combine(_env.WebRootPath, pathroot);
+            string rootDirectory = Path.Combine(_env.ContentRootPath, pathroot);
 
         //  baseUrl: "@Url.Content("~/lib/elfinder/")",
         //url: "@Url.Action("Connector")" ,
 
             // https://localhost:5001/files/
-            string url = $"{uri.Scheme}://{uri.Authority}/{pathroot}/";
+            string url = $"{uri.Scheme}://{uri.Authority}/{requestUrl}/";
             string urlthumb = $"{uri.Scheme}://{uri.Authority}/file-manager-thumb/";
 
 
@@ -62,7 +62,7 @@ namespace SummerEditor.Areas.Files.Controllers
                 //IsReadOnly = !User.IsInRole("Administrators")
                 IsReadOnly = false, // Can be readonly according to user's membership permission
                 IsLocked = false, // If locked, files and directories cannot be deleted, renamed or moved
-                Alias = "Files", // Beautiful name given to the root/home folder
+                Alias = "Media Uploads", // Beautiful name given to the root/home folder
                                  //MaxUploadSizeInKb = 2048, // Limit imposed to user uploaded file <= 2048 KB
                                  //LockedFolders = new List<string>(new string[] { "Folder1" }
                 ThumbnailSize = 100,
