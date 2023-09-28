@@ -20,13 +20,14 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    
 </head>
+
     <body class="h-100"> 
-        <main role="main" class="pb-3 h1-100">
+        <main role="main" class="h1-100">
             @RenderBody()
         </main>
         @await RenderSectionAsync("Scripts", required: false)
 
     </body>
+
 </html>

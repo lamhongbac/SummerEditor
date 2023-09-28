@@ -39,6 +39,7 @@ namespace SummerEditor.Areas.Files.Controllers
         {
             // Thư mục gốc lưu trữ là wwwwroot/files (đảm bảo có tạo thư mục này)
             string pathroot = "files";
+            string requestUrl = "contents";
 
             var driver = new FileSystemDriver();
 
