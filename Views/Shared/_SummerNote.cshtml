@@ -55,8 +55,7 @@
 
         });
         }));
-
-    function elfinderDialog(editor) {
+        function elfinderDialog(editor) {
         var fm = $('<div/>').dialogelfinder({
             baseUrl: "@Url.Content("~/lib/elfinder/")",
             url: "@Url.Action("Connector","FileManager",new {area="Files"})",
@@ -75,11 +74,12 @@
                 }
             }
         }).dialogelfinder('instance');
-    }
-        $(document).ready(function() {
-
-         $('@Model.IDEditor').summernote({       
-            height: @Model.Height,
-            toolbar: @Html.Raw(Model.Toolbar)
-      });        });
+            }
+        
+            $(document).ready(function() {
+                $('@Model.IDEditor').summernote({       
+                    height: @Model.Height,
+                    toolbar: @Html.Raw(Model.Toolbar)
+                    });        
+            });
      </script>

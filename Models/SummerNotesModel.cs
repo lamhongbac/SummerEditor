@@ -17,7 +17,7 @@ namespace SummerEditor.Models
           ['color', ['color']],
           ['para', ['ul', 'ol', 'paragraph']],
           ['table', ['table']],
-          ['insert', ['link', 'picture', 'video','elFinder']],
+          ['insert', ['link', 'picture','video','elFinder']],
           ['view', ['fullscreen', 'codeview', 'help']]
         ]";
    
